@@ -1,144 +1,142 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>サプリ診断フォーム</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: #f5f5f5;
-    margin: 0; padding: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .container {
-    background: #fff;
-    padding: 30px 30px 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    font-weight: 500;
-  }
-  .question-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 12px;
-  }
-  label {
-    display: flex;
-    align-items: center;
-    background: #fafafa;
-    padding: 10px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s ease;
-    font-weight: 400;
-    font-size: 14px;
-  }
-  label:hover {
-    background: #eee;
-  }
-  input[type="checkbox"] {
-    margin-right: 10px;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-  button {
-    display: block;
-    margin: 30px auto 0;
-    padding: 12px 48px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #555;
-  }
-  .result {
-    display: none;
-    margin-top: 40px;
-    padding: 25px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  .result h2 {
-    text-align: center;
-    color: #222;
-    margin-bottom: 25px;
-    font-weight: 500;
-  }
-  .supplements {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 24px;
-  }
-  .supplement {
-    text-align: center;
-    font-size: 14px;
-  }
-  .supplement img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
-    margin-bottom: 12px;
-  }
-  .supplement strong {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .stars {
-    display: flex;
-    justify-content: center;
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    user-select: none;
-  }
-  .star { color: #ddd; }
-  .star.full { color: gold; }
-  .star.half {
-    position: relative;
-    color: transparent;
-    display: inline-block;
-  }
-  .star.half::before {
-    content: '★';
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-    color: gold;
-  }
-  .star.half::after {
-    content: '★';
-    position: absolute;
-    left: 0;
-    color: #ddd;
-  }
-  @media (max-width: 480px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>サプリ診断フォーム</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #f5f5f5;
+      margin: 0; padding: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      background: #fff;
+      padding: 30px 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
     .question-group {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 12px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      background: #fafafa;
+      padding: 10px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.2s ease;
+      font-weight: 400;
+      font-size: 14px;
+    }
+    label:hover {
+      background: #eee;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 48px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    .result {
+      display: none;
+      margin-top: 40px;
+      padding: 25px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .result h2 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 25px;
+      font-weight: 500;
     }
     .supplements {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 24px;
     }
-  }
-</style>
+    .supplement {
+      text-align: center;
+      font-size: 14px;
+    }
+    .supplement img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+    .supplement strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    .star { color: #ddd; }
+    .star.full { color: gold; }
+    .star.half {
+      position: relative;
+      color: transparent;
+      display: inline-block;
+    }
+    .star.half::before {
+      content: '★';
+      position: absolute;
+      left: 0;
+      width: 50%;
+      overflow: hidden;
+      color: gold;
+    }
+    .star.half::after {
+      content: '★';
+      position: absolute;
+      left: 0;
+      color: #ddd;
+    }
+    @media (max-width: 480px) {
+      .question-group, .supplements {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -150,153 +148,153 @@
     <div id="result" class="result"></div>
   </div>
 
-<script>
-  const questions = [
-    "最近、肌のハリや弾力が急に低下したと感じる",
-    "関節や靭帯が固く、動きはじめに痛みを感じやすい",
-    "目尻やほうれい線などのシワが目立ってきた",
-    "仕事終わりに“電池切れ”のような極端な疲労感がある",
-    "口内炎や口角炎ができやすい",
-    "ストレスがかかるとすぐイライラしがち",
-    "朝起きても疲れが抜けず、倦怠感が残る",
-    "あざや内出血ができやすい",
-    "かすり傷や切り傷の治りが遅い",
-    "歯ぐきからの出血や腫れが気になる",
-    "髪が抜けやすく、ツヤやコシがなくなった",
-    "爪が割れたり、縦スジが目立つ",
-    "乾燥性の皮膚炎や湿疹が繰り返し出る",
-    "顔色が青白く、立ちくらみや動悸を感じやすい",
-    "爪がスプーン状に反り返っている",
-    "夕方以降に“こむら返り”や足のつりが起こる",
-    "牛乳・乳製品をあまり摂らず、骨折リスクが気になる",
-    "激しい運動後に強い筋肉痛や疲労が長引く",
-    "お酒を飲むと翌朝まで二日酔いが残りやすい",
-    "紫外線や睡眠不足など“酸化ストレス”に心当たりが多い",
-    "BMI25以上またはウエスト周囲径（男性85cm／女性90cm）以上",
-    "間食や夜食の習慣があり、血糖値の乱高下を感じる",
-    "食後すぐに空腹感が戻り、ドカ食いしてしまうことが多い",
-    "体重は減らしたいが筋肉量は落としたくない",
-    "仕事や家事のプレッシャーで常に交感神経が高ぶっている",
-    "寝つきが悪く、夜中に何度も目が覚める",
-    "血圧が高め（診察室血圧 130/80 mmHg 以上）と言われた",
-    "食後に胃もたれ・膨満感が長く続く",
-    "加熱食中心で、生野菜や発酵食品をあまり摂らない",
-    "加齢やストレスで基礎代謝が落ち、太りやすくなった実感がある",
-    "更年期、PMSが気になる",
-    "手足が冷える",
-    "花粉症やアトピーなどアレルギーがある"
-  ];
+  <script>
+    const questions = [
+      "最近、肌のハリや弾力が急に低下したと感じる",
+      "関節や靭帯が固く、動きはじめに痛みを感じやすい",
+      "目尻やほうれい線などのシワが目立ってきた",
+      "仕事終わりに“電池切れ”のような極端な疲労感がある",
+      "口内炎や口角炎ができやすい",
+      "ストレスがかかるとすぐイライラしがち",
+      "朝起きても疲れが抜けず、倦怠感が残る",
+      "あざや内出血ができやすい",
+      "かすり傷や切り傷の治りが遅い",
+      "歯ぐきからの出血や腫れが気になる",
+      "髪が抜けやすく、ツヤやコシがなくなった",
+      "爪が割れたり、縦スジが目立つ",
+      "乾燥性の皮膚炎や湿疹が繰り返し出る",
+      "顔色が青白く、立ちくらみや動悸を感じやすい",
+      "爪がスプーン状に反り返っている",
+      "夕方以降に“こむら返り”や足のつりが起こる",
+      "牛乳・乳製品をあまり摂らず、骨折リスクが気になる",
+      "激しい運動後に強い筋肉痛や疲労が長引く",
+      "お酒を飲むと翌朝まで二日酔いが残りやすい",
+      "紫外線や睡眠不足など“酸化ストレス”に心当たりが多い",
+      "BMI25以上またはウエスト周囲径（男性85cm／女性90cm）以上",
+      "間食や夜食の習慣があり、血糖値の乱高下を感じる",
+      "食後すぐに空腹感が戻り、ドカ食いしてしまうことが多い",
+      "体重は減らしたいが筋肉量は落としたくない",
+      "仕事や家事のプレッシャーで常に交感神経が高ぶっている",
+      "寝つきが悪く、夜中に何度も目が覚める",
+      "血圧が高め（診察室血圧 130/80 mmHg 以上）と言われた",
+      "食後に胃もたれ・膨満感が長く続く",
+      "加熱食中心で、生野菜や発酵食品をあまり摂らない",
+      "加齢やストレスで基礎代謝が落ち、太りやすくなった実感がある",
+      "更年期、PMSが気になる",
+      "手足が冷える",
+      "花粉症やアトピーなどアレルギーがある"
+    ];
 
-  const assign = [
-    ["collagen", "vitaminC", "gaba"],
-    ["collagen"],
-    ["collagen"],
-    ["vitaminB"],
-    ["vitaminB", "biotin"],
-    ["vitaminB", "antioxidant", "gaba"],
-    ["vitaminB", "iron", "antioxidant"],
-    ["vitaminC"],
-    ["vitaminC", "collagen", "vitaminB"],
-    ["vitaminC"],
-    ["biotin", "collagen"],
-    ["biotin"],
-    ["biotin", "vitaminC", "sopex"],
-    ["iron"],
-    ["iron"],
-    ["iron", "antioxidant"],
-    ["iron"],
-    ["antioxidant", "vitaminB"],
-    ["antioxidant", "vitaminB", "sopex"],
-    ["antioxidant", "collagen", "vitaminC"],
-    ["diet", "vitaminB"],
-    ["diet", "vitaminB"],
-    ["diet", "enzyme"],
-    ["diet", "collagen"],
-    ["gaba", "antioxidant"],
-    ["gaba"],
-    ["gaba", "sopex"],
-    ["enzyme"],
-    ["enzyme", "vitaminC"],
-    ["enzyme", "diet"],
-    ["sopex"],
-    ["sopex", "enzyme", "antioxidant"],
-    ["sopex", "biotin"]
-  ];
+    const assign = [
+      ["collagen", "vitaminC", "gaba"],
+      ["collagen"],
+      ["collagen"],
+      ["vitaminB"],
+      ["vitaminB", "biotin"],
+      ["vitaminB", "antioxidant", "gaba"],
+      ["vitaminB", "iron", "antioxidant"],
+      ["vitaminC"],
+      ["vitaminC", "collagen", "vitaminB"],
+      ["vitaminC"],
+      ["biotin", "collagen"],
+      ["biotin"],
+      ["biotin", "vitaminC", "sopex"],
+      ["iron"],
+      ["iron"],
+      ["iron", "antioxidant"],
+      ["iron"],
+      ["antioxidant", "vitaminB"],
+      ["antioxidant", "vitaminB", "sopex"],
+      ["antioxidant", "collagen", "vitaminC"],
+      ["diet", "vitaminB"],
+      ["diet", "vitaminB"],
+      ["diet", "enzyme"],
+      ["diet", "collagen"],
+      ["gaba", "antioxidant"],
+      ["gaba"],
+      ["gaba", "sopex"],
+      ["enzyme"],
+      ["enzyme", "vitaminC"],
+      ["enzyme", "diet"],
+      ["sopex"],
+      ["sopex", "enzyme", "antioxidant"],
+      ["sopex", "biotin"]
+    ];
 
-  const data = {
-    collagen:   { title: "バイオコラーゲンEX", img:  "./img/9.png", desc: "肌の内側から乾燥や小じわなどの老化サインを防ぎ、 ハリや弾力をアップさせます" },
-    vitaminB:   { title: "ビーコンEX", img: "./img/2.png", desc: "摂取した栄養を体内で効率よく利用するのに必要なビタミンB群。葉酸やビタミンDも配合。" },
-    vitaminC:   { title: "ビタC1300", img:  "./img/5.png", desc: "美白や風邪予防だけではなく 美肌に欠かせない、まさに 美容ビタミンの王様！" },
-    biotin:     { title: "ビオチンEX", img:  "./img/6.png", desc: "皮膚や粘膜の構造や働きを正常に保つ、美容マニアの中で話題のビタミン。" },
-    iron:       { title: "ヘムカルEX", img: "./img/12.png", desc: "不足しがちな鉄分とカルシウムを同時に。肌や身体の不調につながる栄養素を効率的に補えます。" },
-    antioxidant:{ title: "水素姫EX", img:  "./img/4.png", desc: "体内の活性酸素を無害な水に変えることで、酸化を防いで若々しい身体と肌に。" },
-    diet:       { title: "コタラスリム＋乳酸菌", img: "./img/3.png", desc: "脂肪燃焼、血糖値の上昇や脂肪の蓄積を抑えます。さらに乳酸菌配合で腸内環境を整えます。" },
-    gaba:       { title: "新のGABA", img:  "./img/1.png", desc: "神経の興奮を抑え、寝つきを良くしたり睡眠の質を高めます。肌弾力の改善も期待できます。" },
-    enzyme:     { title: "美活酵素", img:  "./img/11.png", desc: "年齢とともに作り出せなくなる酵素。消化、吸収、代謝といった働きを調節する役割があります。" },
-    sopex:      { title: "SOP-EX", img: "./img/10.png", desc: "マリンプラセンタがPMSや更年期の女性ホルモンのバランスの崩れによる不調に対応します。" }
-};
+    const data = {
+      collagen:   { title: "バイオコラーゲンEX", img: "./img/9.png", desc: "肌の内側から乾燥や小じわなどの老化サインを防ぎ、 ハリや弾力をアップさせます" },
+      vitaminB:   { title: "ビーコンEX", img: "./img/2.png", desc: "摂取した栄養を体内で効率よく利用するのに必要なビタミンB群。葉酸やビタミンDも配合。" },
+      vitaminC:   { title: "ビタC1300", img: "./img/5.png", desc: "美白や風邪予防だけではなく 美肌に欠かせない、まさに 美容ビタミンの王様！" },
+      biotin:     { title: "ビオチンEX", img: "./img/6.png", desc: "皮膚や粘膜の構造や働きを正常に保つ、美容マニアの中で話題のビタミン。" },
+      iron:       { title: "ヘムカルEX", img: "./img/12.png", desc: "不足しがちな鉄分とカルシウムを同時に。肌や身体の不調につながる栄養素を効率的に補えます。" },
+      antioxidant:{ title: "水素姫EX", img: "./img/4.png", desc: "体内の活性酸素を無害な水に変えることで、酸化を防いで若々しい身体と肌に。" },
+      diet:       { title: "コタラスリム＋乳酸菌", img: "./img/3.png", desc: "脂肪燃焼、血糖値の上昇や脂肪の蓄積を抑えます。さらに乳酸菌配合で腸内環境を整えます。" },
+      gaba:       { title: "新のGABA", img: "./img/1.png", desc: "神経の興奮を抑え、寝つきを良くしたり睡眠の質を高めます。肌弾力の改善も期待できます。" },
+      enzyme:     { title: "美活酵素", img: "./img/11.png", desc: "年齢とともに作り出せなくなる酵素。消化、吸収、代謝といった働きを調節する役割があります。" },
+      sopex:      { title: "SOP-EX", img: "./img/10.png", desc: "マリンプラセンタがPMSや更年期の女性ホルモンのバランスの崩れによる不調に対応します。" }
+    };
 
-  const questionArea = document.getElementById('questionArea');
-  questions.forEach((q, i) => {
-    const id = 'q' + i;
-    const label = document.createElement('label');
-    label.htmlFor = id;
-    label.innerHTML = `<input type="checkbox" id="${id}" value="${i}" />${q}`;
-    questionArea.appendChild(label);
-  });
+    const questionArea = document.getElementById('questionArea');
+    questions.forEach((q, i) => {
+      const id = 'q' + i;
+      const label = document.createElement('label');
+      label.htmlFor = id;
+      label.innerHTML = `<input type="checkbox" id="${id}" value="${i}" />${q}`;
+      questionArea.appendChild(label);
+    });
 
-  function createStars(rating) {
-    let starsHtml = '';
-    for(let i = 1; i <= 5; i++) {
-      if(rating >= i) {
-        starsHtml += '<span class="star full">★</span>';
-      } else if(rating >= i - 0.5) {
-        starsHtml += '<span class="star half">★</span>';
-      } else {
-        starsHtml += '<span class="star">★</span>';
+    function createStars(rating) {
+      let starsHtml = '<span style="margin-right: 6px; font-size: 0.85em; color: #666;">おすすめ度</span>';
+      for (let i = 1; i <= 5; i++) {
+        if (rating >= i) {
+          starsHtml += '<span class="star full">★</span>';
+        } else if (rating >= i - 0.5) {
+          starsHtml += '<span class="star half">★</span>';
+        } else {
+          starsHtml += '<span class="star">★</span>';
+        }
       }
-    }
-    return `<div class="stars">${starsHtml}</div>`;
-  }
-
-  function showResult() {
-    const checked = [...document.querySelectorAll('input[type="checkbox"]:checked')];
-    if(checked.length === 0){
-      alert("少なくとも1つ以上チェックしてください。");
-      return;
+      return `<div class="stars">${starsHtml}</div>`;
     }
 
-    const score = {};
-    checked.forEach(input => {
-      const idx = parseInt(input.value, 10);
-      const supplements = assign[idx] || [];
-      supplements.forEach(sup => {
-        if(!score[sup]) score[sup] = 0;
-        score[sup]++;
+    function showResult() {
+      const checked = [...document.querySelectorAll('input[type="checkbox"]:checked')];
+      if (checked.length === 0) {
+        alert("少なくとも1つ以上チェックしてください。");
+        return;
+      }
+
+      const score = {};
+      checked.forEach(input => {
+        const idx = parseInt(input.value, 10);
+        const supplements = assign[idx] || [];
+        supplements.forEach(sup => {
+          if (!score[sup]) score[sup] = 0;
+          score[sup]++;
+        });
       });
-    });
 
-    const sorted = Object.entries(score).sort((a,b) => b[1] - a[1]);
-    const top3 = sorted.slice(0,3);
-    const starsRating = [5, 4.5, 4];
+      const sorted = Object.entries(score).sort((a, b) => b[1] - a[1]);
+      const top3 = sorted.slice(0, 3);
+      const starsRating = [5, 4.5, 4];
 
-    const resultDiv = document.getElementById('result');
-    let html = '<h2>おすすめのサプリTOP3</h2><div class="supplements">';
-    top3.forEach(([key, val], i) => {
-      const sup = data[key];
-      if(!sup) return;
-      html += `<div class="supplement">
-        <img src="${sup.img}" alt="${sup.title}" />
-        <strong>${sup.title}</strong>
-        ${createStars(starsRating[i])}
-        <p>${sup.desc}</p>
-      </div>`;
-    });
-    html += '</div>';
-    resultDiv.innerHTML = html;
-    resultDiv.style.display = 'block';
-    resultDiv.scrollIntoView({behavior:"smooth"});
-  }
-</script>
+      const resultDiv = document.getElementById('result');
+      let html = '<h2>おすすめのサプリTOP3</h2><div class="supplements">';
+      top3.forEach(([key], i) => {
+        const sup = data[key];
+        if (!sup) return;
+        html += `<div class="supplement">
+          <img src="${sup.img}" alt="${sup.title}" />
+          <strong>${sup.title}</strong>
+          ${createStars(starsRating[i])}
+          <p>${sup.desc}</p>
+        </div>`;
+      });
+      html += '</div>';
+      resultDiv.innerHTML = html;
+      resultDiv.style.display = 'block';
+      resultDiv.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
